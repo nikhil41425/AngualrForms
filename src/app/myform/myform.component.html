@@ -1,0 +1,7 @@
+<form #myForm="ngForm" >
+<input name="a" type="text" placeholder="name" ngModel>
+<input name="b" type="text" placeholder="password" ngModel>
+<button type="submit" (click)="onSubmit(myForm.value)">submit</button>
+</form>
+{{obj.a}}
+{{obj.b}}

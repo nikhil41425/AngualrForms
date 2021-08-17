@@ -1,0 +1,10 @@
+<p>list works!</p>
+
+<ul class="list-group">
+    <li (click)="onSelect(x)" class="list-group-item list-group-item-action" *ngFor="let x of course">
+
+        <span class="badge badge-light">{{x.id}}</span>{{x.name}}
+        
+
+    </li>
+</ul>

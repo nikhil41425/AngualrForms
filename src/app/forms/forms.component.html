@@ -1,0 +1,110 @@
+<div class="container-fluid">
+  <form #myForm="ngForm"  (ngSubmit)="onSubmit()" novalidate>
+    <div class="row">
+      <div class="col-6">
+        <div class="form-group">
+          <label class="form-label" for="username"> Username : </label>
+          <input
+            class="form-control"
+            type="text"
+            placeholder="Enter Username"
+            name="username"
+            [(ngModel)]="userModel.username"
+          />
+        </div>
+        <div class="form-group">
+          <label class="from-label" for="emailId"> Email Id : </label>
+          <input
+            class="form-control"
+            type="email"
+            placeholder="Enter Email Id"
+            name="emailId"
+            [(ngModel)]="userModel.emailId"
+          />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="mobile"> Mobile : </label>
+          <input
+            class="form-control"
+            type="tel"
+            placeholder="Enter Mobile"
+            name="mobile"
+            [(ngModel)]="userModel.mobile"
+          />
+        </div>
+      </div>
+      <div class="col-6">
+      <!-- Default radio -->
+<div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="gender"
+      id="male"
+      value="male"
+      [(ngModel)]="userModel.gender"
+    />
+    <label for="male" class="form-check-label" > Male </label>
+  </div>
+  
+  <!-- Default checked radio -->
+  <div class="form-check">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="gender"
+      id="female"
+      value="female"
+      [(ngModel)]="userModel.gender"
+      
+    />
+    <label for="female" class="form-check-label" > Female</label>
+  </div>
+     
+        <div class="input-group">
+          <select class="custom-select" name="course" [(ngModel)]="userModel.course">
+            <option value="default" selected>Open this select menu</option> 
+            <option *ngFor="let x of course">{{ x }}</option>
+          </select>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            
+            id="flexCheckChecked"
+            name="remember"
+
+            [(ngModel)]="userModel.remember"
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            Remember Me
+          </label>
+        </div>
+      </div> 
+    </div>
+    <div>
+        <button [disabled]="myForm.form.invalid"  type="submit" class="btn btn-success">Submit</button>
+      </div>
+
+   
+  </form>
+
+  <div>
+      <h1>
+          {{myForm.form.valid}}
+      </h1>
+  </div>
+
+  <div>
+    <h1>
+      {{ myForm.value | json }}
+    </h1>
+  </div>
+  <div>
+    <h1>
+      {{ userModel | json }}
+    </h1>
+  </div>
+</div>

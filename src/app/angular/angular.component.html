@@ -1,0 +1,9 @@
+<button (click)="onEdit()">edit</button>
+<div *ngIf="canEdit ; else noedit">
+  edit
+</div>
+<ng-template #noedit>
+  read only
+</ng-template>
+
+<p [contentEditable]="canEdit">{{message}}</p>
