@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AngularComponent } from './angular/angular.component';
+import { BootstrapComponent } from './bootstrap/bootstrap.component';
 import { DetailsComponent } from './details/details.component';
 import { FormsComponent } from './forms/forms.component';
 import { ListComponent } from './list/list.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:"myform",component:MyformComponent},
   {path:"angular",component:AngularComponent},
   {path:"promise",component:PromiseComponent},
-  {path:"observable",component:ObservableComponent}
+  {path:"observable",component:ObservableComponent},
+  {path:"bootstrap",component:BootstrapComponent}
 ];
 
 @NgModule({

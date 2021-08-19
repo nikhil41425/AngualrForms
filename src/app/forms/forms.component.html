@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <form #myForm="ngForm"  (ngSubmit)="onSubmit()" novalidate>
+  <form #myForm="ngForm" name="form" (ngSubmit)="myForm.valid && onSubmit()"   (ngSubmit)="onSubmit()" novalidate>
     <div class="row">
       <div class="col-6">
         <div class="form-group">
@@ -9,8 +9,20 @@
             type="text"
             placeholder="Enter Username"
             name="username"
+            #username="ngModel"
+            [ngClass]="{ 'is-invalid': myForm.submitted && username.invalid }" required
             [(ngModel)]="userModel.username"
+            required
+
           />
+          <div *ngIf="myForm.submitted && username.invalid" class="invalid-feedback">
+            <div *ngIf="username.errors?.required">Username is required</div>
+        </div>
+          <!-- <div *ngIf="username.errors && (username.invalid || username.touched)">
+               <small class="text-danger"  [class.d-none]="username.valid || username.untouched" *ngIf="username.errors.required">
+                    required
+               </small>
+          </div> -->
         </div>
         <div class="form-group">
           <label class="from-label" for="emailId"> Email Id : </label>
@@ -18,9 +30,16 @@
             class="form-control"
             type="email"
             placeholder="Enter Email Id"
-            name="emailId"
+            name="email"
+            #emailId="ngModel"
             [(ngModel)]="userModel.emailId"
+            [ngClass]="{ 'is-invalid': myForm.submitted && emailId.invalid }" required email
           />
+          <div *ngIf="myForm.submitted && emailId.invalid" class="invalid-feedback">
+            <div *ngIf="emailId.errors?.required">Email is required</div>
+            <div *ngIf="emailId.errors?.email">Email must be a valid email address</div>
+        </div>
+
         </div>
         <div class="form-group">
           <label class="form-label" for="mobile"> Mobile : </label>
@@ -46,7 +65,7 @@
     />
     <label for="male" class="form-check-label" > Male </label>
   </div>
-  
+
   <!-- Default checked radio -->
   <div class="form-check">
     <input
@@ -56,14 +75,14 @@
       id="female"
       value="female"
       [(ngModel)]="userModel.gender"
-      
+
     />
     <label for="female" class="form-check-label" > Female</label>
   </div>
-     
+
         <div class="input-group">
           <select class="custom-select" name="course" [(ngModel)]="userModel.course">
-            <option value="default" selected>Open this select menu</option> 
+            <option value="default" selected>Open this select menu</option>
             <option *ngFor="let x of course">{{ x }}</option>
           </select>
         </div>
@@ -72,7 +91,7 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            
+
             id="flexCheckChecked"
             name="remember"
 
@@ -82,13 +101,13 @@
             Remember Me
           </label>
         </div>
-      </div> 
+      </div>
     </div>
     <div>
-        <button [disabled]="myForm.form.invalid"  type="submit" class="btn btn-success">Submit</button>
+        <button   type="submit" class="btn btn-success">Submit</button>
       </div>
 
-   
+
   </form>
 
   <div>

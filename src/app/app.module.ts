@@ -16,6 +16,7 @@ import { TestComponent } from './test/test.component';
 import { PromiseComponent } from './promise/promise.component';
 import { ObservableComponent } from './observable/observable.component';
 import { AngularComponent } from './angular/angular.component';
+import { BootstrapComponent } from './bootstrap/bootstrap.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { AngularComponent } from './angular/angular.component';
     TestComponent,
     PromiseComponent,
     ObservableComponent,
-    AngularComponent
+    AngularComponent,
+    BootstrapComponent
   ],
   imports: [
     BrowserModule,
